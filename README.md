@@ -62,7 +62,7 @@ func main() {
 	manager.RegisterProbe(k8sprobe.LivenessProbe, livenessProbe)
 
 	// Serve the liveness probe over HTTP
-	http.Handle("/healthz/"+k8sprobe.LivenessProbe.String(), k8sprobe.NewHttpHandler(manager))
+	http.Handle("/healthz/"+k8sprobe.UrlPathValue, k8sprobe.NewHttpHandler(manager))
 	http.ListenAndServe(":8089", nil)
 }
 ```
